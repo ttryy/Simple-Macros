@@ -12,9 +12,9 @@ apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 
-version = '1.0'
-group = 'de.ttryy.simplemakros' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'simplemakros'
+version = '1.13.2-1.0.0.0'
+group = 'de.ttryy.simplemacros' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'simplemacros'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 

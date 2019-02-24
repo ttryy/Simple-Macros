@@ -27,7 +27,7 @@ public class InitGuiListener {
 
 		GuiOptions optionsGui = (GuiOptions) event.getGui();
 		
-		event.addButton(new GuiButton(1001, optionsGui.width / 2 - 100, optionsGui.height / 6 + 18, 200, 20, "Makros") {
+		event.addButton(new GuiButton(1001, optionsGui.width / 2 - 100, optionsGui.height / 6 + 18, 200, 20, "Macros") {
 	         /**
 	          * Called when the left mouse button is pressed over this button. This method is specific to GuiButton.
 	          */
