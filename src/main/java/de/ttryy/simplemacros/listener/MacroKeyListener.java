@@ -10,6 +10,7 @@ import com.google.common.collect.Lists;
 import de.ttryy.simplemacros.event.MacroEvent;
 import de.ttryy.simplemacros.gui.GuiMacroEdit;
 import de.ttryy.simplemacros.main.SimpleMacrosMod;
+import de.ttryy.simplemacros.util.SMKeyBinding;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -74,7 +75,9 @@ public class MacroKeyListener {
 	
 	@SubscribeEvent
 	public void onClientTick(ClientTickEvent event) {
-
+		
+		checkForKeyBinds();
+		
 		if (Minecraft.getInstance().currentScreen != null) {
 			return;
 		}
@@ -112,5 +115,12 @@ public class MacroKeyListener {
 			}
 		});
 	}
-
+	
+	private void checkForKeyBinds() {
+		mod.getKeyBinder().getKeyBindings().forEach(keyBinding -> {
+			if(keyBinding.isPressed()) {
+				((SMKeyBinding) keyBinding).executeKeyBinding();
+			}
+		});
+	}
 }

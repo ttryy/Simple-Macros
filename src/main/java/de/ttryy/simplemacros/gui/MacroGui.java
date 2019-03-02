@@ -12,11 +12,8 @@ public class MacroGui extends GuiScreen{
 	private GuiMacroList makroList;
 	private MacroGui macroGui;
 	
-	private GuiScreen parentScreen;
-	
-	public MacroGui(GuiScreen screen) {
+	public MacroGui() {
 		this.macroGui = this;
-		this.parentScreen = screen;
 	}
 	
 	@Override
@@ -35,7 +32,7 @@ public class MacroGui extends GuiScreen{
 			 * specific to GuiButton.
 			 */
 			public void onClick(double mouseX, double mouseY) {
-				Minecraft.getInstance().displayGuiScreen(parentScreen);
+				macroGui.close();
 			}
 		});
 		

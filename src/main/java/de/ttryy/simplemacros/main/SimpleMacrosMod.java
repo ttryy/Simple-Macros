@@ -3,11 +3,11 @@ package de.ttryy.simplemacros.main;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import de.ttryy.simplemacros.listener.InitGuiListener;
 import de.ttryy.simplemacros.listener.MacroKeyListener;
 import de.ttryy.simplemacros.listener.MacroListener;
 import de.ttryy.simplemacros.manager.JsonManager;
 import de.ttryy.simplemacros.manager.MacroManager;
+import de.ttryy.simplemacros.util.KeyBinder;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -23,6 +23,7 @@ public class SimpleMacrosMod {
 	
 	private MacroManager macroManager;
 	private JsonManager jsonManager;
+	private KeyBinder keyBinder;
 
 	public SimpleMacrosMod() {
 		instance = this;
@@ -35,7 +36,6 @@ public class SimpleMacrosMod {
 	private void setup(FMLCommonSetupEvent event) {
 		// some preinit code
 		LOGGER.info("[Loading] Simple Macros");
-		MinecraftForge.EVENT_BUS.register(new InitGuiListener(this));
 		MinecraftForge.EVENT_BUS.register(new MacroKeyListener(this));
 		MinecraftForge.EVENT_BUS.register(new MacroListener(this));
 	}
@@ -43,6 +43,7 @@ public class SimpleMacrosMod {
 	private void doClientStuff(FMLClientSetupEvent event) {
 		jsonManager = new JsonManager(Minecraft.getInstance().gameDir + "//config//simplemacros", "macros.json");
 		macroManager = new MacroManager(this);
+		keyBinder = new KeyBinder();
 	}
 	
 	public MacroManager getMacroManager() {
@@ -51,6 +52,10 @@ public class SimpleMacrosMod {
 	
 	public JsonManager getJsonManager() {
 		return jsonManager;
+	}
+
+	public KeyBinder getKeyBinder() {
+		return keyBinder;
 	}
 
 	public static SimpleMacrosMod getInstance() {
