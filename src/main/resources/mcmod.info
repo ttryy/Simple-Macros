@@ -2,7 +2,7 @@
   "modid": "simplemacros",
   "name": "Simple Macros",
   "description": "This Mod let's you set macros.",
-  "version": "1.0.0.0",
+  "version": "1.0.1.0",
   "mcversion": "1.13.2",
   "authorList": ["TTRyY"],
 }]
