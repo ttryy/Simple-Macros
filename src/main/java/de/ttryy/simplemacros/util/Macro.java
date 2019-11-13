@@ -19,7 +19,7 @@ public class Macro {
 
 	private String buildMacroDesc(){
 		if(macro.length() > 30) {
-			return macro.substring(0, 26) + "...";
+			return macro.substring(0, 24) + "...";
 		} else {
 			return macro;
 		}

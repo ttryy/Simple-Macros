@@ -1,8 +1,7 @@
 package de.ttryy.simplemacros.gui;
 
-import org.lwjgl.glfw.GLFW;
-
 import de.ttryy.simplemacros.main.SimpleMacrosMod;
+import de.ttryy.simplemacros.util.KeyNames;
 import de.ttryy.simplemacros.util.Macro;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SimpleSound;
@@ -49,7 +48,7 @@ public class GuiMacroEdit extends GuiScreen {
 			/**
 			 * Called when the left mouse button is released over this button. This method
 			 * is specific to GuiButton.
-			 */
+			 */		
 			@Override
 			public void onRelease(double mouseX, double mouseY) {
 				clicked = true;
@@ -102,21 +101,23 @@ public class GuiMacroEdit extends GuiScreen {
 		this.clicked = false;
 		this.keyButton.enabled = true;
 		if (mouseKey) {
-			this.keyButton.displayString = ("MOUSE " + (key + 1)).toUpperCase();
+			this.keyButton.displayString = ("Mouse " + (key + 1));
 		} else if (key == -1) {
 			this.keyButton.displayString = "NONE";
 		} else {
 			try {
 				if(319 < key && key < 340) {
-					this.keyButton.displayString = "NUM " + GLFW.glfwGetKeyName(key, scanCode).toUpperCase();
+					this.keyButton.displayString = "NUM " + KeyNames.getKeyName(key, scanCode);
 				} else {
-					this.keyButton.displayString = GLFW.glfwGetKeyName(key, scanCode).toUpperCase();
+					this.keyButton.displayString = KeyNames.getKeyName(key, scanCode);
 				}
 			} catch (Exception e) {
+				e.printStackTrace();
 				this.key = -1;
 				this.keyButton.displayString = "NONE";
 			}
 		}
+		
 	}
 
 	@Override
